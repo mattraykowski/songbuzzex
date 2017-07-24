@@ -70,7 +70,7 @@ config :songbuzz, Songbuzz.Web.Endpoint,
 # Configure your database
 config :songbuzz, Songbuzz.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "songbuzz_prod",
-  pool_size: 15
+  url: {:system, "DATABASE_URL"},
+  database: "",
+  pool_size: 10,
+  ssl: true
