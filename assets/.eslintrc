@@ -1,0 +1,16 @@
+{
+  "extends": "airbnb",
+  "plugins": [
+    "jest"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "rules": {
+    "space-before-function-paren": 0,
+    "react/prop-types": 0,
+    "no-confusing-arrow": 0
+  }
+}
