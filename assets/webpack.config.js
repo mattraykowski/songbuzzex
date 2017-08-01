@@ -20,7 +20,7 @@ module.exports = {
     app: DEV_ENTRIES.concat([path.join(__dirname, 'src', 'index.js')]),
   },
   output: {
-    path: path.join(__dirname, '..', 'priv', 'static', 'js'),
+    path: path.join(__dirname, '..', 'priv', 'static'),
     filename: '[name].bundle.js',
     publicPath: publicPath
   },
