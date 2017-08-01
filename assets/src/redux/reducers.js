@@ -1,7 +1,7 @@
-import { sessionReducer } from './modules/session';
+import { session } from './modules/session';
 
 const rootReducer = {
-  session: sessionReducer,
+  session,
 };
 
 export default rootReducer;

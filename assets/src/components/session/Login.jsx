@@ -2,11 +2,11 @@ import React from 'react';
 import { Alert, Card, Form, Icon, Input, Button, Row, Col } from 'antd';
 const FormItem = Form.Item;
 
-const UsernameField = ({ form }) => (
-  form.getFieldDecorator('userName', {
-    rules: [{ required: true, message: 'Please input your username!' }],
+const EmailField = ({ form }) => (
+  form.getFieldDecorator('email', {
+    rules: [{ required: true, message: 'Please input your email address!' }],
   })(
-    <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="Username" />
+    <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="Email Address" />
   )
 );
 
@@ -18,14 +18,14 @@ const PasswordField = ({ form }) => (
   )
 );
 
-export const Login = ({ form, handleSubmit, submitError }) => (
+export const Login = ({ form, handleSubmit, loginError }) => (
   <Row type="flex" justify="space-around" align="middle" className="login-container">
     <Col span={12}>
       <Card title="Login">
         <Form layout="vertical" onSubmit={handleSubmit}>
-          {submitError.length > 0 && <Alert message={submitError} type="error" />}
+          {loginError.length > 0 && <Alert message={loginError} type="error" />}
           <FormItem>
-            <UsernameField form={form} />
+            <EmailField form={form} />
           </FormItem>
           <FormItem>
             <PasswordField form={form} />

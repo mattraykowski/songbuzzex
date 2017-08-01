@@ -6,11 +6,25 @@
   .header {
     position: fixed;
     width: 100%;
+
+    .logo-item {
+      width: 58px;
+      height: 58px;
+      margin-top: 3px;
+    }
   }
   .content {
-    top: 64px;
-    height: calc(100vh - 64px);
+    width: 100%;
+    margin-top: 64px;
+    height: calc(100vh - 130px);
     display: flex;
+
+    .page-content {
+      flex: 2;
+      margin: 2em 2em 0 2em;
+      padding: 1em;
+      background: #fff;
+    }
   }
 }
 
@@ -32,6 +46,12 @@
     &:hover {
       color: #108ee9;
     }
+  }
+
+  .content {
+    margin: 2em;
+    padding: 1em;
+    background: #fff;
   }
 }
 

@@ -1,14 +1,21 @@
 import React from 'react';
 import { compose, withState, withHandlers } from 'recompose';
+import { connect } from 'react-redux';
 import { Route, Switch, withRouter, matchPath  } from 'react-router-dom';
+
 import { Layout, Menu, Icon, Button } from 'antd';
 const { Header, Sider, Content, Footer } = Layout;
 const MenuItem = Menu.Item;
+const SubMenu = Menu.SubMenu;
+
+import { actions } from '../../redux/modules/session';
 import LinkContainer from '../shared/LinkContainer';
+import { ProfileContainer } from '../profile/Profile';
+
 import logo from '../../images/logo.svg';
 
 export const AuthenticatedLayout = props => {
-  const { sidebarCollapsed, toggleSidebar, selectedKeys } = props;
+  const { sidebarCollapsed, toggleSidebar, selectedKeys, logout } = props;
   return (
     <Layout className="authenticated-layout">
       <Sider
@@ -29,23 +36,34 @@ export const AuthenticatedLayout = props => {
           <MenuItem key="/">
             <LinkContainer to="/">
               <div>
-                <Icon type="user" />
-                <span>Dash</span>
+                <Icon type="api" />
+                <span>Dashboard</span>
               </div>
             </LinkContainer>
           </MenuItem>
           <MenuItem key="/playlists">
             <LinkContainer to="/playlists">
               <div>
-                <Icon type="video-camera" />
+                <Icon type="bars" />
                 <span>Playlists</span>
               </div>
             </LinkContainer>
           </MenuItem>
-          <MenuItem key="3">
-            <Icon type="upload" />
-            <span>Nav 3</span>
-          </MenuItem>
+          <SubMenu
+            key="/profile"
+            title={<span><Icon type="user" /><span>My Account</span></span>}
+          >
+            <MenuItem key="/profile">
+              <LinkContainer to="/profile">
+                <div>
+                  <span>My Profile</span>
+                </div>
+              </LinkContainer>
+            </MenuItem>
+            <MenuItem key="logout" >
+              <span onClick={() => logout()}>Logout</span>
+            </MenuItem>
+          </SubMenu>
         </Menu>
       </Sider>
       <Layout>
@@ -56,9 +74,10 @@ export const AuthenticatedLayout = props => {
             onClick={toggleSidebar}
           />
         </Header>
-        <Content>
+        <Content className="content">
           <Switch>
             <Route path="/playlists" component={() => <div>My Playlists!</div>} />
+            <Route path="/profile" component={ProfileContainer} />
             <Route exact path="/" component={() => <div>Authenticated content.</div>} />
           </Switch>
         </Content>
@@ -69,8 +88,13 @@ export const AuthenticatedLayout = props => {
     </Layout>);
 };
 
+const mapDispatchToProps = {
+  logout: actions.logout,
+};
+
 export const AuthenticatedLayoutContainer = compose(
   withRouter,
+  connect(null, mapDispatchToProps),
   withState('sidebarCollapsed', 'setSidebarCollapsed', false),
   withHandlers({
     toggleSidebar: ({ setSidebarCollapsed, sidebarCollapsed }) => () => {
@@ -81,6 +105,7 @@ export const AuthenticatedLayoutContainer = compose(
       const location = props.location ? props.location.pathname : '';
       const paths = [
         '/playlists',
+        '/profile',
       ];
 
       // Handle the root path.

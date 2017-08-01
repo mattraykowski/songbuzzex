@@ -8,6 +8,8 @@ import configureStore from './store';
 
 import Root from './components/Root';
 
+export const SONGBUZZ_TOKEN = 'SONGBUZZ_TOKEN';
+
 const history = createBrowserHistory();
 const networkInterface = createNetworkInterface({ uri: '/graph' });
 networkInterface.use([
@@ -17,7 +19,7 @@ networkInterface.use([
         req.options.headers = {};
       }
 
-      const token = localStorage.getItem('SONGBUZZ_TOKEN');
+      const token = localStorage.getItem(SONGBUZZ_TOKEN);
       req.options.headers.authorization = token ? `Bearer ${token}` : null;
       next();
     }

@@ -1,17 +1,23 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { Layout } from 'antd';
 const { Header, Content, Footer } = Layout;
 
 import { LoginForm } from '../session/LoginForm';
+import { Home } from '../pages/Home';
+
+import logo from '../../images/logo.svg';
 
 export const PublicLayout = () => (
   <Layout className="layout public-layout">
     <Header className="header">
-      header
+      <img className="logo-item" src={logo} />
     </Header>
     <Content className="content">
-      <Route path="/login" component={LoginForm} />
+      <Switch>
+        <Route path="/login" component={LoginForm} />
+        <Route path="/" component={Home} />
+      </Switch>
     </Content>
     <Footer>
       Matt Raykowski &copy; 2017
