@@ -1,0 +1,78 @@
+@import '~antd/dist/antd.css';
+
+/* Public Layout */
+
+.public-layout {
+  .header {
+    position: fixed;
+    width: 100%;
+  }
+  .content {
+    top: 64px;
+    height: calc(100vh - 64px);
+    display: flex;
+  }
+}
+
+/* Authenticated layout. */
+.authenticated-layout {
+  height: 100vh;
+
+  .header {
+    background: #fff;
+    padding: 0;
+  }
+
+  .sider-toggle {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 16px;
+    cursor: pointer;
+    transition: color .3s;
+    &:hover {
+      color: #108ee9;
+    }
+  }
+}
+
+
+.logo-menu {
+  height: 64px !important;
+  padding-top: 3px !important;
+  .logo-item {
+    transition: height .3s;
+    transition: width .3s;
+    width: 58px;
+    height: 58px;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.ant-layout-sider-collapsed {
+  .logo-menu {
+    padding-top: 12px !important;
+    height: 64px !important;
+    .logo-item {
+      transition: height .3s;
+      transition: width .3s;
+      width: 32px;
+      height: 32px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+
+/* Login Page */
+
+.login-container {
+  flex: 2;
+}
+
+.login-form-forgot {
+  float: right;
+}
+.login-form-button {
+  width: 100%;
+}

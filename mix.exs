@@ -28,7 +28,7 @@ defmodule Songbuzz.Mixfile do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [{:phoenix, "~> 1.3.0-rc"},
+    [{:phoenix, "~> 1.3.0-rc", override: true},
      {:phoenix_pubsub, "~> 1.0"},
      {:phoenix_ecto, "~> 3.2"},
      {:postgrex, ">= 0.0.0"},
@@ -36,7 +36,12 @@ defmodule Songbuzz.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:distillery, "~> 1.0.0"}]
+     {:distillery, "~> 1.0.0"},
+     {:absinthe, "~> 1.3"},
+     {:absinthe_plug, "~> 1.3"},
+     {:absinthe_ecto, "~> 0.1"},
+     {:comeonin, "~> 3.2"},
+     {:guardian, "~> 0.14.5"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

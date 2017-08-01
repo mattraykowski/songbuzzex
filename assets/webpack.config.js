@@ -29,7 +29,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         use: ['babel-loader'],
-        include: path.join(__dirname, 'js'),
+        include: path.join(__dirname, 'src'),
         exclude: /node_modules/
       },
       {
@@ -39,6 +39,7 @@ module.exports = {
           {loader: 'css-loader'},
         ],
       },
+      {test: /\.less$/, use: ['style-loader','css-loader','less-loader']},
       {test: /\.scss$/, use: ['style-loader','css-loader','sass-loader']},
       {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, use: ['file-loader']},
       {test: /\.(woff|woff2)$/, use: ['url-loader?prefix=font\&limit=100000']},
@@ -49,12 +50,6 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      Tether: 'tether'
-    }),
-    new webpack.optimize.CommonsChunkPlugin({ name: 'common' })
   ],
   resolve: {
     modules: [
