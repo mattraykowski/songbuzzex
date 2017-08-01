@@ -7,7 +7,6 @@ const MenuItem = Menu.Item;
 import LinkContainer from '../shared/LinkContainer';
 import logo from '../../images/logo.svg';
 
-window.console.log(logo);
 export const AuthenticatedLayout = props => {
   const { sidebarCollapsed, toggleSidebar, selectedKeys } = props;
   return (

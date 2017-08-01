@@ -4,7 +4,7 @@
     "stage-0",
     "react"
   ],
-  "plugins": ["react-hot-loader/babel", ["import", { "libraryName": "antd", "style": true }]],
+  "plugins": [["import", { "libraryName": "antd", "style": true }]],
   "env": {
     "test": {
       "plugins": ["transform-es2015-modules-commonjs"]

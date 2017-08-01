@@ -2,25 +2,19 @@ const path = require('path');
 const webpack = require('webpack');
 var publicPath = 'http://localhost:4001/';
 
-const DEV_ENTRIES = [
+const ENTRIES = [
   // Polyfill ES6 functionality for Sagas, etc.
   'babel-polyfill',
-  // Activate React HMR Support
-  'react-hot-loader/patch',
-  // Bundle the client for webpack-dev-server and connect
-  // to the provided endpoint.
-  'webpack-dev-server/client?http://localhost:4001',
-  // Bundle the client for hot-reloading on only for successful updates.
-  'webpack/hot/only-dev-server',
+  path.join(__dirname, 'src', 'index.js'),
 ];
 
 module.exports = {
   devtool: 'eval',
   entry: {
-    app: DEV_ENTRIES.concat([path.join(__dirname, 'src', 'index.js')]),
+    app: ENTRIES,
   },
   output: {
-    path: path.join(__dirname, '..', 'priv', 'static'),
+    path: path.join(__dirname, '..', 'priv', 'static', 'js'),
     filename: '[name].bundle.js',
     publicPath: publicPath
   },

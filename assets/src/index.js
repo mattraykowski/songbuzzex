@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 import { createBrowserHistory } from 'history';
-import { AppContainer } from 'react-hot-loader';
 
 import configureStore from './store';
 
@@ -33,11 +32,9 @@ const target = document.getElementById('root');
 
 const render = () => {
   ReactDOM.render(
-    <AppContainer>
-      <ApolloProvider store={store} client={client}>
-        <Root history={history} />
-      </ApolloProvider>
-    </AppContainer>,
+    <ApolloProvider store={store} client={client}>
+      <Root history={history} />
+    </ApolloProvider>,
     target
   );
 }

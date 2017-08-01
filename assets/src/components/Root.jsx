@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { compose } from 'recompose';
+import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
@@ -9,27 +9,15 @@ import { types, actions } from '../redux/modules/session';
 import { PublicLayout } from './layouts/PublicLayout';
 import { AuthenticatedLayoutContainer } from './layouts/AuthenticatedLayout';
 
-class Root extends Component {
-  componentWillMount() {
-    const token = localStorage.getItem('SONGBUZZ_TOKEN');
-    if (token) {
-      this.props.setLogin(token);
+const Root = ({ history, authenticated }) => (
+  <ConnectedRouter history={history}>
+    {
+      authenticated ?
+      <AuthenticatedLayoutContainer /> :
+      <PublicLayout />
     }
-  }
-
-  render() {
-    window.console.log('auth?', this.props.authenticated);
-    return (
-      <ConnectedRouter history={this.props.history}>
-        {
-          this.props.authenticated ?
-          <AuthenticatedLayoutContainer /> :
-          <PublicLayout />
-        }
-      </ConnectedRouter>
-    )
-  }
-}
+  </ConnectedRouter>
+);
 
 const mapStateToProps = ({ session }) => ({
   loggingIn: session.loggingIn,
@@ -41,4 +29,12 @@ const mapDispatchToProps = {
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
+  lifecycle({
+    componentWillMount() {
+      const token = localStorage.getItem('SONGBUZZ_TOKEN');
+      if (token) {
+        this.props.setLogin(token);
+      }
+    }
+  })
 )(Root);
