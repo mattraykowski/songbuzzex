@@ -14,18 +14,18 @@ const mapStateToProps = ({ session }) => ({
 });
 
 const mapDispatchToProps = {
-  login: actions.login,
+  signup: actions.signup,
 };
 
 export const LoginForm = compose(
   connect(mapStateToProps, mapDispatchToProps),
   Form.create(),
   withHandlers({
-    handleSubmit: ({ form, login }) => event => {
+    handleSubmit: ({ form, signup }) => event => {
       event.preventDefault();
       form.validateFields((error, values) => {
         if (!error) {
-          login(values.email, values.password);
+          signup(values.email, values.password);
         }
       });
     }

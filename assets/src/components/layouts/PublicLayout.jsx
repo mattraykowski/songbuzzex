@@ -15,6 +15,7 @@ export const PublicLayout = () => (
     </Header>
     <Content className="content">
       <Switch>
+        <Route path="/signup" component={SignupForm} />
         <Route path="/login" component={LoginForm} />
         <Route path="/" component={Home} />
       </Switch>
