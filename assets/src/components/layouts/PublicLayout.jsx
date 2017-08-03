@@ -4,6 +4,7 @@ import { Layout } from 'antd';
 const { Header, Content, Footer } = Layout;
 
 import { LoginForm } from '../session/LoginForm';
+import { SignupForm } from '../session/SignupForm';
 import { Home } from '../pages/Home';
 
 import logo from '../../images/logo.svg';

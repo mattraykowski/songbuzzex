@@ -18,10 +18,10 @@ const PasswordField = ({ form }) => (
   )
 );
 
-export const Login = ({ form, handleSubmit, loginError }) => (
+export const Signup = ({ form, handleSubmit, loginError }) => (
   <Row type="flex" justify="space-around" align="middle" className="login-container">
     <Col span={12}>
-      <Card title="Login">
+      <Card title="Signup">
         <Form layout="vertical" onSubmit={handleSubmit}>
           {loginError.length > 0 && <Alert message={loginError} type="error" />}
           <FormItem>

@@ -7,7 +7,7 @@ import { Form } from 'antd';
 
 import { actions } from '../../redux/modules/session';
 
-import { Login } from './Login';
+import { Signup } from './Signup';
 
 const mapStateToProps = ({ session }) => ({
   loginError: session.loginError,
@@ -17,7 +17,7 @@ const mapDispatchToProps = {
   signup: actions.signup,
 };
 
-export const LoginForm = compose(
+export const SignupForm = compose(
   connect(mapStateToProps, mapDispatchToProps),
   Form.create(),
   withHandlers({
@@ -30,4 +30,4 @@ export const LoginForm = compose(
       });
     }
   }),
-)(Login)
+)(Signup)
