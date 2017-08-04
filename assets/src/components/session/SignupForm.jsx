@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { compose, withHandlers, withState } from 'recompose';
+import { compose } from 'recompose';
 import { push } from 'connected-react-router';
 import { graphql, gql } from 'react-apollo';
 import { Form } from 'antd';
@@ -20,14 +20,4 @@ const mapDispatchToProps = {
 export const SignupForm = compose(
   connect(mapStateToProps, mapDispatchToProps),
   Form.create(),
-  withHandlers({
-    handleSubmit: ({ form, signup }) => event => {
-      event.preventDefault();
-      form.validateFields((error, values) => {
-        if (!error) {
-          signup(values.email, values.password);
-        }
-      });
-    }
-  }),
 )(Signup)

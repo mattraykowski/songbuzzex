@@ -63,5 +63,14 @@ defmodule Songbuzz.Schema do
 
       resolve &Songbuzz.Accounts.UserResolver.login/2
     end
+
+    field :signup, type: :session do
+      arg :email, non_null(:string)
+      arg :first_name, non_null(:string)
+      arg :last_name, non_null(:string)
+      arg :password, non_null(:string)
+
+      resolve &Songbuzz.Accounts.UserResolver.signup/2
+    end
   end
 end

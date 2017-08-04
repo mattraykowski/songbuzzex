@@ -1,6 +1,7 @@
 export const types = {
   LOGIN: '@songbuzz/session/LOGIN',
   LOGOUT: '@songbuzz/session/LOGOUT',
+  SIGNUP: '@songbuzz/session/SIGNUP',
   SET_LOGIN: '@songbuzz/session/SET_LOGIN',
   SET_LOGIN_FAILURE: '@songbuzz/session/SET_LOGIN_FAILURE',
 };
@@ -8,6 +9,8 @@ export const types = {
 export const actions = {
   login: (email, password) => ({ type: types.LOGIN, payload: { email, password } }),
   logout: () => ({ type: types.LOGOUT }),
+  signup: (email, password, firstName, lastName) => 
+    ({ type: types.SIGNUP, payload: { email, password, firstName, lastName } }),
   setLogin: token => ({ type: types.SET_LOGIN, payload: token }),
   setLoginFailure: () => ({ type: types.SET_LOGIN_FAILURE }),
 };

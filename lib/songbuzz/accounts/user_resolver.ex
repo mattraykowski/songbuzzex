@@ -24,4 +24,10 @@ defmodule Songbuzz.Accounts.UserResolver do
     end
   end
 
+  def signup(params, _info) do
+    with {:ok, user} <- Songbuzz.Accounts.create_user(params),         
+         {:ok, jwt, _ } <- Guardian.encode_and_sign(user, :access) do
+      {:ok, %{token: jwt}}
+    end
+  end
 end

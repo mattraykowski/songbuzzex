@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Alert, Card, Form, Icon, Input, Button, Row, Col } from 'antd';
 const FormItem = Form.Item;
 
@@ -46,7 +47,7 @@ export class Login extends Component {
                 <Button type="primary" htmlType="submit" className="login-form-button">
                   Log in
                 </Button>
-                <a className="login-form-forgot" href="">Sign Up</a>
+                <Link className="login-form-forgot" to="/signup">Sign Up</Link>
               </FormItem>
             </Form>
           </Card>
