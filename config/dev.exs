@@ -13,7 +13,7 @@ config :songbuzz, Songbuzz.Web.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [node: ["./node_modules/.bin/webpack-dev-server", "--watch-stdin", "--colors",
+  watchers: [node: ["./node_modules/webpack-dev-server/bin/webpack-dev-server.js", "--watch-stdin", "--colors",
                     cd: Path.expand("../assets", __DIR__)]]
 
 # ## SSL Support

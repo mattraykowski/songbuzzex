@@ -40,7 +40,8 @@ defmodule Songbuzz.Mixfile do
      {:absinthe, "~> 1.3"},
      {:absinthe_plug, "~> 1.3"},
      {:absinthe_ecto, "~> 0.1"},
-     {:comeonin, "~> 3.2"},
+     {:comeonin, "~> 4.0.0"},
+     {:bcrypt_elixir, "~> 0.12.0"},
      {:guardian, "~> 0.14.5"}]
   end
 
