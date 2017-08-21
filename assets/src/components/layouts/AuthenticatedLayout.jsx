@@ -3,7 +3,7 @@ import { compose, withState, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter, matchPath  } from 'react-router-dom';
 
-import { Layout, Menu, Icon, Button } from 'antd';
+import { Layout, Menu, Icon, Button, Row, Col } from 'antd';
 const { Header, Sider, Content, Footer } = Layout;
 const MenuItem = Menu.Item;
 const SubMenu = Menu.SubMenu;
@@ -11,6 +11,10 @@ const SubMenu = Menu.SubMenu;
 import { actions } from '../../redux/modules/session';
 import LinkContainer from '../shared/LinkContainer';
 import { ProfileContainer } from '../profile/Profile';
+import { MusicPlayerContainer } from '../player/MusicPlayer';
+import { MusicPlayerControlsContainer } from '../player/MusicPlayerControls';
+import { PlaylistsContainer } from '../playlists/PlaylistsContainer';
+import { PlaylistContainer } from '../playlists/PlaylistContainer';
 
 import logo from '../../images/logo.svg';
 
@@ -75,11 +79,29 @@ export const AuthenticatedLayout = props => {
           />
         </Header>
         <Content className="content">
-          <Switch>
-            <Route path="/playlists" component={() => <div>My Playlists!</div>} />
-            <Route path="/profile" component={ProfileContainer} />
-            <Route exact path="/" component={() => <div>Authenticated content.</div>} />
-          </Switch>
+          <Row type="flex" style={{ width: '100%' }}>
+            <Col xs={{ span: 24, order: 2 }} sm={{ span: 8, order: 1 }}>
+              <Route path="/playlists" component={PlaylistsContainer} />
+            </Col>
+            <Col xs={{ span: 24, order: 1 }} sm={{ span: 16, order: 2 }}>
+              <Row>
+                <Col style={{ minHeight: '225px' }}>
+                  <MusicPlayerContainer />
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={24}>
+                  <Route path="/playlists/:playlistId" component={PlaylistContainer} />
+                </Col>
+              </Row>
+            </Col>
+            <Col xs={24}>
+              <Switch>
+                <Route path="/profile" component={ProfileContainer} />
+                <Route exact path="/" component={() => <div>Authenticated content.</div>} />
+              </Switch>
+            </Col>
+          </Row>
         </Content>
         <Footer>
           Matt Raykowski &copy; 2017
@@ -95,7 +117,7 @@ const mapDispatchToProps = {
 export const AuthenticatedLayoutContainer = compose(
   withRouter,
   connect(null, mapDispatchToProps),
-  withState('sidebarCollapsed', 'setSidebarCollapsed', false),
+  withState('sidebarCollapsed', 'setSidebarCollapsed', true),
   withHandlers({
     toggleSidebar: ({ setSidebarCollapsed, sidebarCollapsed }) => () => {
       setSidebarCollapsed(!sidebarCollapsed);

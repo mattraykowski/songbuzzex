@@ -1,7 +1,6 @@
 @import '~antd/dist/antd.css';
 
 /* Public Layout */
-
 .public-layout {
   .header {
     position: fixed;
@@ -49,9 +48,24 @@
   }
 
   .content {
-    margin: 2em;
-    padding: 1em;
+    padding: 2em;
     background: #fff;
+
+    height: calc(100vh - 178px);
+    display: flex;
+    overflow: auto;
+
+
+    /* First row in the content block. */
+    > .ant-row {
+      width: 100%;
+    }
+
+    .playlists {
+      height: calc(100vh - 274px);
+      display: flex;
+      overflow: auto;
+    }
   }
 }
 
@@ -95,4 +109,52 @@
 }
 .login-form-button {
   width: 100%;
+}
+
+/* Music Player */
+.music-player {
+  float: right;
+  .vcr-control {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 16px;
+    cursor: pointer;
+    transition: color .3s;
+    &:hover {
+      color: #108ee9;
+    }
+  }
+}
+
+.player-video-container {
+  max-width: 400px;
+  max-height: 225px;
+}
+.player-video {
+  display: block;
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  overflow: hidden;
+  min-height: 225px;
+  background-color: black;
+
+  span iframe, object, embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+.player-video.player-video-flyout {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 10em;
+  margin-right: 10em;
+  width: 200px;
+  height: 113px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
