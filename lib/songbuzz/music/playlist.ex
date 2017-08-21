@@ -1,4 +1,7 @@
 defmodule Songbuzz.Music.Playlist do
+  @moduledoc """
+  Defines the `Playlist` schema, changesets, and queries.
+  """
   use Ecto.Schema
   import Ecto.Changeset
   alias Songbuzz.{Music.Playlist, Accounts.User}

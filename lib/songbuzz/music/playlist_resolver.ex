@@ -1,4 +1,7 @@
 defmodule Songbuzz.Music.PlaylistResolver do
+  @moduledoc """
+  Provides resolver functions for `Playlist` objects in the GraphQL API.
+  """
   import Ecto.Query, only: [where: 2]
   alias Songbuzz.{Music.Playlist, Repo}
 
@@ -15,12 +18,14 @@ defmodule Songbuzz.Music.PlaylistResolver do
   end
 
   def update(%{id: id, music_playlist: playlist_attrs}, _info) do
-    Songbuzz.Music.get_playlist!(id)
+    id
+    |> Songbuzz.Music.get_playlist!()
     |> Songbuzz.Music.update_playlist(playlist_attrs)
   end
 
   def delete(%{id: id}, _info) do
-    Songbuzz.Music.get_playlist!(id)
+    id
+    |> Songbuzz.Music.get_playlist!()
     |> Songbuzz.Music.delete_playlist()
   end
 end

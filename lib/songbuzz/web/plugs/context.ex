@@ -1,4 +1,8 @@
 defmodule Songbuzz.Web.Context do
+  @moduledoc """
+  Adds Guardian user information to the Absinthe context. Allows for authorization of
+  the GraphQL APIs.
+  """
   @behaviour Plug
   import Plug.Conn
 

@@ -1,4 +1,7 @@
 defmodule Tasks do
+  @moduledoc """
+  Tasks for Gigalixir deployment.
+  """
   def migrate do
     {:ok, _} = Application.ensure_all_started(:songbuzz)
 

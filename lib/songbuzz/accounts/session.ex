@@ -1,4 +1,8 @@
 defmodule Songbuzz.Accounts.Session do
+  @moduledoc """
+  Defines session helpers for verifying password matching and handling
+  account authentication.
+  """
   alias Songbuzz.{Accounts, Accounts.User}
 
 

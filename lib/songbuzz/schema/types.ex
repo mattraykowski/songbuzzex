@@ -1,4 +1,7 @@
 defmodule Songbuzz.Schema.Types do
+  @moduledoc """
+  Defines the Absinthe GraphQL types.
+  """
   use Absinthe.Schema.Notation
   use Absinthe.Ecto, repo: Songbuzz.Repo
 

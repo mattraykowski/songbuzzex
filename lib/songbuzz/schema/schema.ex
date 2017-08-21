@@ -1,4 +1,7 @@
 defmodule Songbuzz.Schema do
+  @moduledoc """
+  Defines the Absinthe GraphQL schema.
+  """
   use Absinthe.Schema
   import_types Songbuzz.Schema.Types
 

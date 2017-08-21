@@ -1,4 +1,7 @@
 defmodule Songbuzz.Application do
+  @moduledoc """
+  Songbuzz application definition.
+  """
   use Application
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html

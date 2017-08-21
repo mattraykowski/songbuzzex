@@ -1,4 +1,7 @@
 defmodule Songbuzz.Accounts.User do
+  @moduledoc """
+  Defines the `User` schema, changesets, and queries.
+  """
   use Ecto.Schema
   import Ecto.Changeset
   alias Songbuzz.Accounts.User

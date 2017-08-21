@@ -42,7 +42,8 @@ defmodule Songbuzz.Mixfile do
      {:absinthe_ecto, "~> 0.1"},
      {:comeonin, "~> 4.0.0"},
      {:bcrypt_elixir, "~> 0.12.0"},
-     {:guardian, "~> 0.14.5"}]
+     {:guardian, "~> 0.14.5"},
+     {:credo, "~> 0.3", only: [:dev, :test]}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
