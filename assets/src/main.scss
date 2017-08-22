@@ -126,35 +126,54 @@
   }
 }
 
-.player-video-container {
-  max-width: 400px;
-  max-height: 225px;
-}
-.player-video {
-  display: block;
-  position: relative;
-  padding-bottom: 56.25%;
-  padding-top: 30px;
-  overflow: hidden;
-  min-height: 225px;
-  background-color: black;
+.player-background {
+  background-color: lightgrey;
 
-  span iframe, object, embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  /* When the player is in flyout mode, change the background color */
+  &.flyout {
+    background-color: white;
+  }
+
+  /* Define the maximum player size and center it in the background container */
+  .player-video-container {
+    max-width: 800px;
+    padding: 1em;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* Make the player responsive so that it scales up and down in size and maintain aspect */
+    .player-video {
+      display: block;
+      position: relative;
+      padding-bottom: 56.25%;
+      padding-top: 30px;
+      overflow: hidden;
+      min-height: 225px;
+      background-color: black;
+
+      /* "Flyout" the player window to the lower right. */
+      &.flyout {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        margin-bottom: 10em;
+        margin-right: 10em;
+        width: 200px;
+        height: 113px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+      }
+
+      /* set the YouTube embed to fill the whole container. */
+      span iframe, object, embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
 }
-.player-video.player-video-flyout {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  margin-bottom: 10em;
-  margin-right: 10em;
-  width: 200px;
-  height: 113px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
+
+

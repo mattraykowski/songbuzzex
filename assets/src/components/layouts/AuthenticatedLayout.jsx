@@ -77,6 +77,7 @@ export const AuthenticatedLayout = props => {
             type={sidebarCollapsed ? 'menu-unfold' : 'menu-fold'}
             onClick={toggleSidebar}
           />
+          <MusicPlayerControlsContainer />
         </Header>
         <Content className="content">
           <Row type="flex" style={{ width: '100%' }}>
@@ -84,11 +85,7 @@ export const AuthenticatedLayout = props => {
               <Route path="/playlists" component={PlaylistsContainer} />
             </Col>
             <Col xs={{ span: 24, order: 1 }} sm={{ span: 16, order: 2 }}>
-              <Row>
-                <Col style={{ minHeight: '225px' }}>
-                  <MusicPlayerContainer />
-                </Col>
-              </Row>
+              <MusicPlayerContainer />
               <Row>
                 <Col xs={24}>
                   <Route path="/playlists/:playlistId" component={PlaylistContainer} />
@@ -101,7 +98,7 @@ export const AuthenticatedLayout = props => {
                 <Route exact path="/" component={() => <div>Authenticated content.</div>} />
               </Switch>
             </Col>
-          </Row>
+              </Row>
         </Content>
         <Footer>
           Matt Raykowski &copy; 2017

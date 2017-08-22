@@ -3,6 +3,8 @@ import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
+import { LocaleProvider } from 'antd';
+import enUS from 'antd/lib/locale-provider/en_US';
 
 import '../main.scss';
 import { types, actions } from '../redux/modules/session';
@@ -10,13 +12,15 @@ import { PublicLayout } from './layouts/PublicLayout';
 import { AuthenticatedLayoutContainer } from './layouts/AuthenticatedLayout';
 
 const Root = ({ history, authenticated }) => (
-  <ConnectedRouter history={history}>
-    {
-      authenticated ?
-      <AuthenticatedLayoutContainer /> :
-      <PublicLayout />
-    }
-  </ConnectedRouter>
+  <LocaleProvider locale={enUS}>
+    <ConnectedRouter history={history}>
+      {
+        authenticated ?
+        <AuthenticatedLayoutContainer /> :
+        <PublicLayout />
+      }
+    </ConnectedRouter>
+  </LocaleProvider>
 );
 
 const mapStateToProps = ({ session }) => ({

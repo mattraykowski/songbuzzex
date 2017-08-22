@@ -1,20 +1,45 @@
 import React from 'react';
-import { compose } from 'recompose';
+import { compose, withHandlers } from 'recompose';
+import { connect } from 'react-redux';
+import { Icon } from 'antd';
 
-const MusicPlayerControls = () =>
+import { PLAYER_STATES, actions } from '../../redux/modules/player';
+
+const MusicPlayerControls = ({ onPlay, onPause, playerState }) =>
   <div className="music-player">
     <Icon
       className="vcr-control"
       type="step-backward"
     />
-    <Icon
-      className="vcr-control"
-      type="caret-right"
-    />
+    {playerState !== PLAYER_STATES.PLAYING &&
+      <Icon
+        className="vcr-control"
+        type="caret-right"
+        onClick={onPlay}
+      />}
+    {playerState === PLAYER_STATES.PLAYING &&
+      <Icon
+        className="vcr-control"
+        type="pause"
+        onClick={onPause}
+      />}
     <Icon
       className="vcr-control"
       type="step-forward"
     />
   </div>;
 
-export const MusicPlayerControlsContainer = compose()(MusicPlayerControls);
+const mapStateToProps = state => ({
+  playerState: state.player.playerState,
+});
+const mapDispatchToProps = {
+  setRequestedState: actions.setRequestedState,
+};
+
+export const MusicPlayerControlsContainer = compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withHandlers({
+    onPlay: ({ setRequestedState }) => event => setRequestedState(PLAYER_STATES.PLAYING),
+    onPause: ({ setRequestedState }) => event => setRequestedState(PLAYER_STATES.PAUSED),
+  }),
+)(MusicPlayerControls);
