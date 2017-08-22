@@ -92,13 +92,13 @@ export const AuthenticatedLayout = props => {
                 </Col>
               </Row>
             </Col>
-            <Col xs={24}>
+            <Col xs={{ span: 24, order: 1, push: 8}} >
               <Switch>
                 <Route path="/profile" component={ProfileContainer} />
                 <Route exact path="/" component={() => <div>Authenticated content.</div>} />
               </Switch>
             </Col>
-              </Row>
+          </Row>
         </Content>
         <Footer>
           Matt Raykowski &copy; 2017

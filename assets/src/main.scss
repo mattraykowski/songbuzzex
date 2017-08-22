@@ -143,8 +143,10 @@
   background-color: lightgrey;
 
   /* When the player is in flyout mode, change the background color */
-  &.flyout {
-    background-color: white;
+  @media (min-width: 768px) {
+    &.flyout {
+      background-color: white;
+    }
   }
 
   /* Define the maximum player size and center it in the background container */
@@ -165,16 +167,19 @@
       background-color: black;
 
       /* "Flyout" the player window to the lower right. */
-      &.flyout {
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        margin-bottom: 10em;
-        margin-right: 10em;
-        width: 200px;
-        height: 113px;
-        padding-top: 0px;
-        padding-bottom: 0px;
+      @media (min-width: 768px) {
+        &.flyout {
+          position: fixed;
+          bottom: 0;
+          right: 0;
+          margin-bottom: 10em;
+          margin-right: 10em;
+          width: 200px;
+          height: 113px;
+          min-height: 113px;
+          padding-top: 0px;
+          padding-bottom: 0px;
+        }
       }
 
       /* set the YouTube embed to fill the whole container. */
