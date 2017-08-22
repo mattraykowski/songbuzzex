@@ -33,7 +33,7 @@ class MusicPlayer extends Component {
           this.state.ytPlayer.pauseVideo();
           break;
         default:
-          windows.console.log('Invalid requested player state!');
+          window.console.log('Invalid requested player state!');
       }
     }
   }

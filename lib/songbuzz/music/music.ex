@@ -49,8 +49,8 @@ defmodule Songbuzz.Music do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_playlist(attrs \\ %{}) do
-    %Playlist{}
+  def create_playlist(attrs \\ %{}, user) do
+    %Playlist{accounts_user_id: user.id}
     |> Playlist.changeset(attrs)
     |> Repo.insert()
   end

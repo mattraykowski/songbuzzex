@@ -7,7 +7,6 @@ defmodule Songbuzz.Schema do
 
   input_object :update_playlist_params do
     field :title, non_null(:string)
-    field :accounts_user_id, non_null(:integer)
   end
 
   input_object :update_user_params do
@@ -42,7 +41,6 @@ defmodule Songbuzz.Schema do
 
     field :create_music_playlist, type: :music_playlist do
       arg :title, non_null(:string)
-      arg :accounts_user_id, non_null(:integer)
 
       resolve &Songbuzz.Music.PlaylistResolver.create/2
     end

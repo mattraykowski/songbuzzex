@@ -64,7 +64,20 @@
     .playlists {
       height: calc(100vh - 274px);
       display: flex;
+      flex-direction: column;
       overflow: auto;
+
+      .no-data {
+        width: 100%;
+        padding: 1em;
+        background-color: lightgrey;
+        text-align: center;
+
+        h3, p {
+          color: grey;
+          padding-bottom: 1em;
+        }
+      }
     }
   }
 }

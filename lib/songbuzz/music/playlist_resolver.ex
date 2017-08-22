@@ -8,14 +8,12 @@ defmodule Songbuzz.Music.PlaylistResolver do
   def all(_args, %{context: %{current_user: %{id: id}}}) do
     {:ok, Repo.all(Playlist)}
   end
+  def all(_args, info), do: {:error, "Not authenticated"}
 
-  def all(_args, info) do
-    {:error, "Not authenticated"}
+  def create(args, %{context: %{current_user: current_user}}) do
+    Songbuzz.Music.create_playlist(args, current_user)
   end
-
-  def create(args, _info) do
-    Songbuzz.Music.create_playlist(args)
-  end
+  def create(_args, info), do: {:error, "Not authenticated"}
 
   def update(%{id: id, music_playlist: playlist_attrs}, _info) do
     id
